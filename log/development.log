@@ -1,0 +1,34 @@
+DEPRECATION WARNING: Using legacy connection handling is deprecated. Please set
+`legacy_connection_handling` to `false` in your application.
+
+The new connection handling does not support `connection_handlers`
+getter and setter.
+
+Read more about how to migrate at: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+ (called from <main> at /home/fena/projects/leadlatest/config/environment.rb:5)
+DEPRECATION WARNING: Non-URL-safe CSRF tokens are deprecated. Use 6.1 defaults or above. (called from <main> at /home/fena/projects/leadlatest/app/controllers/application_controller.rb:1)
+DEPRECATION WARNING: Using legacy connection handling is deprecated. Please set
+`legacy_connection_handling` to `false` in your application.
+
+The new connection handling does not support `connection_handlers`
+getter and setter.
+
+Read more about how to migrate at: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+ (called from <main> at /home/fena/projects/leadlatest/config/environment.rb:5)
+DEPRECATION WARNING: Non-URL-safe CSRF tokens are deprecated. Use 6.1 defaults or above. (called from <main> at /home/fena/projects/leadlatest/app/controllers/application_controller.rb:1)
+Started GET "/admin" for ::1 at 2023-09-01 16:53:05 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (70.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 62ms (ActiveRecord: 0.0ms | Allocations: 4347)
+
+
+Started GET "/admin/login" for ::1 at 2023-09-01 16:53:10 +0300
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering layout /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/layouts/active_admin_logged_out.html.erb
+  Rendering /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/devise/shared/_links.erb (Duration: 4.2ms | Allocations: 660)
+  Rendered /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (Duration: 79.9ms | Allocations: 12125)
+  Rendered layout /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/layouts/active_admin_logged_out.html.erb (Duration: 55576.4ms | Allocations: 1374211)
+Completed 200 OK in 55872ms (Views: 55633.4ms | ActiveRecord: 114.3ms | Allocations: 1389234)
+
+
