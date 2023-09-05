@@ -7104,3 +7104,319 @@ Sent data student grade 2023-09-04 05:01:57 UTC.pdf (5.1ms)
 Completed 200 OK in 1225ms (Views: 4.5ms | ActiveRecord: 110.3ms | Allocations: 559272)
 
 
+DEPRECATION WARNING: Using legacy connection handling is deprecated. Please set
+`legacy_connection_handling` to `false` in your application.
+
+The new connection handling does not support `connection_handlers`
+getter and setter.
+
+Read more about how to migrate at: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+ (called from <main> at /home/fena/projects/leadlatest/config/environment.rb:5)
+DEPRECATION WARNING: Non-URL-safe CSRF tokens are deprecated. Use 6.1 defaults or above. (called from <main> at /home/fena/projects/leadlatest/app/controllers/application_controller.rb:1)
+Started GET "/admin/courses/197386a9-33bd-451b-bcce-b2b95a448ef6" for ::1 at 2023-09-04 08:11:45 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::CoursesController#show as HTML
+  Parameters: {"id"=>"197386a9-33bd-451b-bcce-b2b95a448ef6"}
+  [1m[36mAdminUser Load (2.9ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", "12da2018-667e-414a-86b4-bd41d18f35e9"], ["LIMIT", 1]]
+  [1m[36mCourse Load (2.2ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", "197386a9-33bd-451b-bcce-b2b95a448ef6"], ["LIMIT", 1]]
+  Rendering /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb
+  [1m[36mCourseModule Load (1.2ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:189:in `block (9 levels) in <main>'
+  [1m[36mProgram Load (1.4ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:192:in `block (9 levels) in <main>'
+  [1m[36mCurriculum Load (1.2ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:195:in `block (9 levels) in <main>'
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", "197386a9-33bd-451b-bcce-b2b95a448ef6"], ["record_type", "Course"], ["name", "course_outline"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:199:in `block (9 levels) in <main>'
+  [1m[36mPrerequisite Load (1.3ms)[0m  [1m[34mSELECT "prerequisites".* FROM "prerequisites" WHERE "prerequisites"."course_id" = $1[0m  [["course_id", "197386a9-33bd-451b-bcce-b2b95a448ef6"]]
+  ↳ app/admin/courses.rb:221:in `block (7 levels) in <main>'
+  [1m[36mAcademicCalendar Load (1.7ms)[0m  [1m[34mSELECT "academic_calendars".* FROM "academic_calendars" WHERE "academic_calendars"."study_level" = $1 AND "academic_calendars"."admission_type" = $2 AND (starting_date <= '2023-09-04 05:11:48.976828' AND ending_date >= '2023-09-04 05:11:48.976868') ORDER BY "academic_calendars"."id" ASC LIMIT $3[0m  [["study_level", "graduate"], ["admission_type", "online"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:20:in `current_academic_calendar'
+  [1m[36mSemesterRegistration Load (1.9ms)[0m  [1m[34mSELECT "semester_registrations".* FROM "semester_registrations" WHERE "semester_registrations"."study_level" = $1 AND "semester_registrations"."admission_type" = $2 LIMIT $3[0m  [["study_level", "graduate"], ["admission_type", "online"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:245:in `block (5 levels) in <main>'
+  [1m[36mCourseRegistration Load (2.3ms)[0m  [1m[34mSELECT "course_registrations".* FROM "course_registrations" WHERE "course_registrations"."course_id" = $1 AND "course_registrations"."enrollment_status" = $2 AND "course_registrations"."academic_calendar_id" IS NULL AND "course_registrations"."semester" = $3 ORDER BY student_full_name ASC[0m  [["course_id", "197386a9-33bd-451b-bcce-b2b95a448ef6"], ["enrollment_status", "enrolled"], ["semester", 1]]
+  ↳ app/admin/courses.rb:245:in `block (5 levels) in <main>'
+  [1m[36mAssessmentPlan Load (1.8ms)[0m  [1m[34mSELECT "assessment_plans".* FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1 ORDER BY created_at ASC[0m  [["course_id", "197386a9-33bd-451b-bcce-b2b95a448ef6"]]
+  ↳ app/admin/courses.rb:281:in `block (7 levels) in <main>'
+  [1m[36mAssessmentPlan Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1[0m  [["course_id", "197386a9-33bd-451b-bcce-b2b95a448ef6"]]
+  ↳ app/admin/courses.rb:303:in `block (9 levels) in <main>'
+  [1m[36mAssessmentPlan Pluck (0.8ms)[0m  [1m[34mSELECT "assessment_plans"."assessment_weight" FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1[0m  [["course_id", "197386a9-33bd-451b-bcce-b2b95a448ef6"]]
+  ↳ app/admin/courses.rb:306:in `block (9 levels) in <main>'
+  [1m[36mCourseInstructor Load (1.7ms)[0m  [1m[34mSELECT "course_instructors".* FROM "course_instructors" WHERE "course_instructors"."course_id" = $1 ORDER BY created_at ASC[0m  [["course_id", "197386a9-33bd-451b-bcce-b2b95a448ef6"]]
+  ↳ app/admin/courses.rb:317:in `block (5 levels) in <main>'
+  Rendered /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb (Duration: 2665.6ms | Allocations: 834943)
+Completed 200 OK in 2921ms (Views: 2588.3ms | ActiveRecord: 135.5ms | Allocations: 866751)
+
+
+DEPRECATION WARNING: Using legacy connection handling is deprecated. Please set
+`legacy_connection_handling` to `false` in your application.
+
+The new connection handling does not support `connection_handlers`
+getter and setter.
+
+Read more about how to migrate at: https://guides.rubyonrails.org/active_record_multiple_databases.html#migrate-to-the-new-connection-handling
+ (called from <main> at /home/fena/projects/leadlatest/config/environment.rb:5)
+DEPRECATION WARNING: Non-URL-safe CSRF tokens are deprecated. Use 6.1 defaults or above. (called from <main> at /home/fena/projects/leadlatest/app/controllers/application_controller.rb:1)
+Started GET "/admin/courses" for ::1 at 2023-09-04 09:11:35 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Admin::CoursesController#index as HTML
+  [1m[36mAdminUser Load (2.2ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", "12da2018-667e-414a-86b4-bd41d18f35e9"], ["LIMIT", 1]]
+  Rendering /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb
+  [1m[36mCourse Count (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "courses" WHERE (created_at >= '2023-08-28 06:11:38.539993')[0m
+  [1m[36mCourse Load (1.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mCourseModule Load (1.2ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.1ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.1ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.1ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mProgram Load (1.3ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.1ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCurriculum Load (1.5ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mProgram Load (1.4ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" IS NULL ORDER BY "programs"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCurriculum Load (1.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" IS NULL ORDER BY "curriculums"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCourseModule Load (1.2ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" IS NULL ORDER BY "course_modules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb (Duration: 3177.2ms | Allocations: 899862)
+Completed 200 OK in 3365ms (Views: 3143.5ms | ActiveRecord: 83.8ms | Allocations: 922718)
+
+
+Started GET "/admin/courses" for ::1 at 2023-09-04 09:11:53 +0300
+Processing by Admin::CoursesController#index as HTML
+  [1m[36mAdminUser Load (1.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", "12da2018-667e-414a-86b4-bd41d18f35e9"], ["LIMIT", 1]]
+  Rendering /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb
+  [1m[36mCourse Count (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "courses" WHERE (created_at >= '2023-08-28 06:11:54.112687')[0m
+  [1m[36mCourse Load (1.9ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mCourseModule Load (1.1ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.1ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mCACHE CourseModule Load (0.0ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:18:in `block (3 levels) in <main>'
+  [1m[36mProgram Load (1.1ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.1ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.1ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.1ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCACHE Program Load (0.1ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:21:in `block (3 levels) in <main>'
+  [1m[36mCurriculum Load (1.1ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.1ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mCACHE Curriculum Load (0.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:24:in `block (3 levels) in <main>'
+  [1m[36mProgram Load (1.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" IS NULL ORDER BY "programs"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCurriculum Load (1.0ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" IS NULL ORDER BY "curriculums"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCourseModule Load (0.9ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" IS NULL ORDER BY "course_modules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/index.html.arb (Duration: 1327.2ms | Allocations: 347284)
+Completed 200 OK in 1352ms (Views: 1317.7ms | ActiveRecord: 12.7ms | Allocations: 350175)
+
+
+Started GET "/admin/courses/f6173121-4950-42ec-ba30-cc2f2d0ceb0c" for ::1 at 2023-09-04 09:11:58 +0300
+Processing by Admin::CoursesController#show as HTML
+  Parameters: {"id"=>"f6173121-4950-42ec-ba30-cc2f2d0ceb0c"}
+  [1m[36mAdminUser Load (1.1ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", "12da2018-667e-414a-86b4-bd41d18f35e9"], ["LIMIT", 1]]
+  [1m[36mCourse Load (1.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"], ["LIMIT", 1]]
+  Rendering /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb
+  [1m[36mCourseModule Load (1.6ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:189:in `block (9 levels) in <main>'
+  [1m[36mProgram Load (1.0ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:192:in `block (9 levels) in <main>'
+  [1m[36mCurriculum Load (1.1ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:195:in `block (9 levels) in <main>'
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"], ["record_type", "Course"], ["name", "course_outline"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:199:in `block (9 levels) in <main>'
+  [1m[36mPrerequisite Load (1.6ms)[0m  [1m[34mSELECT "prerequisites".* FROM "prerequisites" WHERE "prerequisites"."course_id" = $1[0m  [["course_id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"]]
+  ↳ app/admin/courses.rb:221:in `block (7 levels) in <main>'
+  [1m[36mAcademicCalendar Load (1.9ms)[0m  [1m[34mSELECT "academic_calendars".* FROM "academic_calendars" WHERE "academic_calendars"."study_level" = $1 AND "academic_calendars"."admission_type" = $2 AND (starting_date <= '2023-09-04 06:11:59.059894' AND ending_date >= '2023-09-04 06:11:59.059948') ORDER BY "academic_calendars"."id" ASC LIMIT $3[0m  [["study_level", "graduate"], ["admission_type", "online"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:20:in `current_academic_calendar'
+  [1m[36mSemesterRegistration Load (2.4ms)[0m  [1m[34mSELECT "semester_registrations".* FROM "semester_registrations" WHERE "semester_registrations"."study_level" = $1 AND "semester_registrations"."admission_type" = $2 LIMIT $3[0m  [["study_level", "graduate"], ["admission_type", "online"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:245:in `block (5 levels) in <main>'
+  [1m[36mCourseRegistration Load (2.6ms)[0m  [1m[34mSELECT "course_registrations".* FROM "course_registrations" WHERE "course_registrations"."course_id" = $1 AND "course_registrations"."enrollment_status" = $2 AND "course_registrations"."academic_calendar_id" IS NULL AND "course_registrations"."semester" = $3 ORDER BY student_full_name ASC[0m  [["course_id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"], ["enrollment_status", "enrolled"], ["semester", 1]]
+  ↳ app/admin/courses.rb:245:in `block (5 levels) in <main>'
+  [1m[36mAssessmentPlan Load (2.8ms)[0m  [1m[34mSELECT "assessment_plans".* FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1 ORDER BY created_at ASC[0m  [["course_id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"]]
+  ↳ app/admin/courses.rb:281:in `block (7 levels) in <main>'
+  [1m[36mAssessmentPlan Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1[0m  [["course_id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"]]
+  ↳ app/admin/courses.rb:303:in `block (9 levels) in <main>'
+  [1m[36mAssessmentPlan Pluck (1.1ms)[0m  [1m[34mSELECT "assessment_plans"."assessment_weight" FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1[0m  [["course_id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"]]
+  ↳ app/admin/courses.rb:306:in `block (9 levels) in <main>'
+  [1m[36mCourseInstructor Load (2.0ms)[0m  [1m[34mSELECT "course_instructors".* FROM "course_instructors" WHERE "course_instructors"."course_id" = $1 ORDER BY created_at ASC[0m  [["course_id", "f6173121-4950-42ec-ba30-cc2f2d0ceb0c"]]
+  ↳ app/admin/courses.rb:317:in `block (5 levels) in <main>'
+  Rendered /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb (Duration: 1005.7ms | Allocations: 307431)
+Completed 200 OK in 1028ms (Views: 937.0ms | ActiveRecord: 74.6ms | Allocations: 310986)
+
+
+Started GET "/admin/courses/19a4a55c-a0cf-4773-9d06-93ffc2b703ee" for ::1 at 2023-09-04 09:12:10 +0300
+Processing by Admin::CoursesController#show as HTML
+  Parameters: {"id"=>"19a4a55c-a0cf-4773-9d06-93ffc2b703ee"}
+  [1m[36mAdminUser Load (1.4ms)[0m  [1m[34mSELECT "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", "12da2018-667e-414a-86b4-bd41d18f35e9"], ["LIMIT", 1]]
+  [1m[36mCourse Load (1.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = $1 LIMIT $2[0m  [["id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"], ["LIMIT", 1]]
+  Rendering /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb
+  [1m[36mCourseModule Load (1.2ms)[0m  [1m[34mSELECT "course_modules".* FROM "course_modules" WHERE "course_modules"."id" = $1 LIMIT $2[0m  [["id", "056e3349-e83f-479f-86f1-558f1b19c050"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:189:in `block (9 levels) in <main>'
+  [1m[36mProgram Load (1.4ms)[0m  [1m[34mSELECT "programs".* FROM "programs" WHERE "programs"."id" = $1 LIMIT $2[0m  [["id", "959e1dd9-0184-4722-a6b5-e54df61d6883"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:192:in `block (9 levels) in <main>'
+  [1m[36mCurriculum Load (1.2ms)[0m  [1m[34mSELECT "curriculums".* FROM "curriculums" WHERE "curriculums"."id" = $1 LIMIT $2[0m  [["id", "97ea4c65-c920-40bb-82bf-57c7cdfea074"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:195:in `block (9 levels) in <main>'
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"], ["record_type", "Course"], ["name", "course_outline"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:199:in `block (9 levels) in <main>'
+  [1m[36mPrerequisite Load (1.3ms)[0m  [1m[34mSELECT "prerequisites".* FROM "prerequisites" WHERE "prerequisites"."course_id" = $1[0m  [["course_id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"]]
+  ↳ app/admin/courses.rb:221:in `block (7 levels) in <main>'
+  [1m[36mAcademicCalendar Load (1.5ms)[0m  [1m[34mSELECT "academic_calendars".* FROM "academic_calendars" WHERE "academic_calendars"."study_level" = $1 AND "academic_calendars"."admission_type" = $2 AND (starting_date <= '2023-09-04 06:12:11.417258' AND ending_date >= '2023-09-04 06:12:11.417286') ORDER BY "academic_calendars"."id" ASC LIMIT $3[0m  [["study_level", "graduate"], ["admission_type", "online"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:20:in `current_academic_calendar'
+  [1m[36mSemesterRegistration Load (1.2ms)[0m  [1m[34mSELECT "semester_registrations".* FROM "semester_registrations" WHERE "semester_registrations"."study_level" = $1 AND "semester_registrations"."admission_type" = $2 LIMIT $3[0m  [["study_level", "graduate"], ["admission_type", "online"], ["LIMIT", 1]]
+  ↳ app/admin/courses.rb:245:in `block (5 levels) in <main>'
+  [1m[36mCourseRegistration Load (1.8ms)[0m  [1m[34mSELECT "course_registrations".* FROM "course_registrations" WHERE "course_registrations"."course_id" = $1 AND "course_registrations"."enrollment_status" = $2 AND "course_registrations"."academic_calendar_id" IS NULL AND "course_registrations"."semester" = $3 ORDER BY student_full_name ASC[0m  [["course_id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"], ["enrollment_status", "enrolled"], ["semester", 1]]
+  ↳ app/admin/courses.rb:245:in `block (5 levels) in <main>'
+  [1m[36mAssessmentPlan Load (1.4ms)[0m  [1m[34mSELECT "assessment_plans".* FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1 ORDER BY created_at ASC[0m  [["course_id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"]]
+  ↳ app/admin/courses.rb:281:in `block (7 levels) in <main>'
+  [1m[36mAssessmentPlan Count (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1[0m  [["course_id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"]]
+  ↳ app/admin/courses.rb:303:in `block (9 levels) in <main>'
+  [1m[36mAssessmentPlan Pluck (1.2ms)[0m  [1m[34mSELECT "assessment_plans"."assessment_weight" FROM "assessment_plans" WHERE "assessment_plans"."course_id" = $1[0m  [["course_id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"]]
+  ↳ app/admin/courses.rb:306:in `block (9 levels) in <main>'
+  [1m[36mCourseInstructor Load (1.4ms)[0m  [1m[34mSELECT "course_instructors".* FROM "course_instructors" WHERE "course_instructors"."course_id" = $1 ORDER BY created_at ASC[0m  [["course_id", "19a4a55c-a0cf-4773-9d06-93ffc2b703ee"]]
+  ↳ app/admin/courses.rb:317:in `block (5 levels) in <main>'
+  Rendered /home/fena/.rbenv/versions/3.1.2/lib/ruby/gems/3.1.0/gems/activeadmin-2.13.1/app/views/active_admin/resource/show.html.arb (Duration: 873.7ms | Allocations: 276723)
+Completed 200 OK in 894ms (Views: 859.2ms | ActiveRecord: 18.3ms | Allocations: 280015)
+
+
